@@ -1,12 +1,35 @@
 
-<div class="container-fluid" ng-controller="BookshelfController">
+<div class="container" ng-controller="BookshelfController">
+      <div class="row inputRow">
+             <div class="inputContainer clearfix">
+
+                <div class="col-sm-6 col-md-4">
+                  <div class="radioFormgroup">
+                    <input id="keyword" type="radio" ng-model="SearchType" name="SearchType" value="$" selected>
+                    <label for="keyword">Keyword</label>&nbsp;
+
+                    <input id="title" type="radio" ng-model="SearchType" name="SearchType" value="title">
+                    <label for="title">Title</label>
+                  </div>
+                </div>
+                <div class="col-sm-6 col-md-8">
+                  <div class="search">
+                    <input type="text" ng-model="query[SearchType]" ng-init="SearchType ='$'" placeholder="Search books">
+                  </div>
+                </div>
+             </div>
+      </div>
+
+
+
+
     <div class="row">
         <%= image_tag('spinner.gif', class: 'spinner col-md-2 col-md-offset-5', 'ng-show' => 'loading') %>
     </div>
 
     <div class="row">
 
-        <div class="col-sm-6 col-md-4" ng-repeat="book in filteredBooks" ng-hide="loading" ng-cloak>
+        <div class="col-sm-6 col-md-4" ng-repeat="book in filteredBooks | filter:query" ng-hide="loading" ng-cloak>
             <div class="row bookCard">
                 <div class="col-md-6 text-hide imgContainer">
                     <img ng-src="{{book.image_url}}" class="img-responsive img-thumbnail" />

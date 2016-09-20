@@ -3,6 +3,7 @@ angular.module('app.bookshelf', ['ui.bootstrap'])
       '$scope', '$http',
       function ($scope, $http) {
         $scope.loading = true;
+        $scope.query = '';
         $http({
           method: 'GET',
           url: '/books.json'
