@@ -1,3 +1,16 @@
+/*
+For some reasons my js and scss files are not being compiled when
+they're placed in the js or css directories. I put my css in the
+application css file and I am just going to leave the js file like
+this since new files are not being picked up. I could use a task runner
+like gulp or grunt, but that might be too much for this demo work
+
+I know I could break this controller up and create a Factory/Service
+a module and a component.
+
+
+ */
+
 angular.module('app.bookshelf', ['ui.bootstrap'])
   .controller('BookshelfController', [
       '$scope', '$http',

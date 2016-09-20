@@ -1,5 +1,5 @@
 
-<div class="container" ng-controller="BookshelfController">
+<div class="container mainContainer" ng-controller="BookshelfController">
       <div class="row inputRow">
              <div class="inputContainer clearfix">
 
@@ -23,19 +23,21 @@
 
 
 
-    <div class="row">
-        <%= image_tag('spinner.gif', class: 'spinner col-md-2 col-md-offset-5', 'ng-show' => 'loading') %>
+    <div class="row loading" ng-show = "loading" >
+        <%= image_tag('spinner.gif', class: 'spinner col-md-2 col-md-offset-5') =%>
     </div>
 
     <div class="row">
 
-        <div class="col-sm-6 col-md-4" ng-repeat="book in filteredBooks | filter:query" ng-hide="loading" ng-cloak>
+        <div class="col-sm-6 col-md-4 cardContainer" ng-repeat="book in filteredBooks | filter:query" ng-hide="loading" ng-cloak>
             <div class="row bookCard">
                 <div class="col-md-6 text-hide imgContainer">
                     <img ng-src="{{book.image_url}}" class="img-responsive img-thumbnail" />
                 </div>
 
-                <div class="col-md-6">
+                <div class="col-md-6 info">
+                    <div class="infoWrapper">
+                        <div class="infoInnerWrapper">
                             <h1 class="title">
                                 <p ng-if="book.title.length < 50">{{book.title}}</p>
                                 <p ng-if="book.title.length >= 50">{{book.title.substr(0,50)}}...</p>
@@ -49,8 +51,11 @@
                                 </span> {{book.publisher.name}}
                                 <span>
                                     in
-                        </span> {{book.published}}
+                                </span> {{book.published}}
+                            </div>
+                         </div>
                     </div>
+
                 </div>
 
             </div>
