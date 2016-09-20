@@ -1,38 +1,38 @@
-<div class="container" ng-controller="BookshelfController">
 
-  <div class="row">
-    <%= image_tag('spinner.gif', class: 'spinner col-md-2 col-md-offset-5', 'ng-show' => 'loading') %>
-  </div>
-
-  <div class="row" ng-repeat="book in books" ng-hide="loading" ng-cloak>
-    <div class="col-xs-2 text-hide">
-      <img ng-src="{{book.image_url}}" class="img-responsive img-thumbnail" />
+<div class="container-fluid" ng-controller="BookshelfController">
+    <div class="row">
+        <%= image_tag('spinner.gif', class: 'spinner col-md-2 col-md-offset-5', 'ng-show' => 'loading') %>
     </div>
-    <div class="col-md-10">
-      <div class="row">&nbsp;</div>
-      <div class="row">&nbsp;</div>
-      <h1>
-        <p ng-if="book.title.length < 50">{{book.title}}</p>
-        <p ng-if="book.title.length >= 50">{{book.title.substr(0,50)}}...</p>
-        <small class="text-small text-muted">
-          <em>
-            {{book.author.name}}
-          </em>
-        </small>
-      </h1>
 
-      <div class="row">
-        <div class="col-xs-12 text-right text-muted">
-          <small>
-            Published by
-          </small>
-          {{book.publisher.name}}
-          <small>
-            in
-          </small>
-          {{book.published}}
+    <div class="row">
+
+        <div class="col-sm-6 col-md-4" ng-repeat="book in books" ng-hide="loading" ng-cloak>
+            <div class="row bookCard">
+                <div class="col-md-6 text-hide imgContainer">
+                    <img ng-src="{{book.image_url}}" class="img-responsive img-thumbnail" />
+                </div>
+
+                <div class="col-md-6">
+                            <h1 class="title">
+                                <p ng-if="book.title.length < 50">{{book.title}}</p>
+                                <p ng-if="book.title.length >= 50">{{book.title.substr(0,50)}}...</p>
+                                <em class="text-small text-muted author">
+                                    {{book.author.name}}
+                                </em>
+                            </h1>
+                            <div class="text-right text-muted publisherInfo">
+                                 <span>
+                                Published by
+                                </span> {{book.publisher.name}}
+                                <span>
+                                    in
+                        </span> {{book.published}}
+                    </div>
+                </div>
+
+            </div>
         </div>
-      </div>
     </div>
-  </div>
+
+
 </div>
